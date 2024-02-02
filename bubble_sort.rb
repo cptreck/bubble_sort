@@ -3,18 +3,24 @@
 # (using #sort would be pretty pointless, wouldn’t it?).
 
 def bubble_sort (arr)
-    low = 0
-    high = 0
-    sorted = arr
-    sorted.each_index do |i|
-        unless sorted[i + 1] == nil
-            if sorted[i] > sorted[i + 1]
-                high = sorted[i]
-                sorted[i] = sorted[i + 1]
-                sorted[i + 1] = high
+    n = arr.length - 2
+    swapped = nil
+    temp=0
+    for i in 0..n
+        swapped = false
+        for j in 0..n-i
+            if arr[j] > arr[j+1]
+                temp = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = temp
+                swapped = true
             end
         end
-    end     
+        if swapped == false
+            break
+        end
+    end 
+    arr
 end
 
 p bubble_sort([4,3,78,2,0,2])
